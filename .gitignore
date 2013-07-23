@@ -1,0 +1,6 @@
+*~
+*.elc
+elpa/*
+ac-comphist.dat
+.mc-lists.el
+auto-comp-list/*
