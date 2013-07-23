@@ -1,5 +1,7 @@
 ;; enable hs-minor mode
 (add-hook 'prog-mode-hook #'hs-minor-mode)
+;; flycheck on in programming modes
+(add-hook 'prog-mode-hook 'flycheck-mode)
 
 ;; shamelessly stolen from Zach Allaun
 
