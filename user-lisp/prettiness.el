@@ -5,7 +5,7 @@
 (set-face-attribute 'default nil :font "Source Code Pro-13")
 
 ;; Custom colors
-(load-theme 'solarized-dark t)
+(load-theme 'graham t)
 
 ;; nyan-mode
 (require 'nyan-mode)

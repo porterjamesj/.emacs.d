@@ -32,7 +32,8 @@
     multiple-cursors
     nyan-mode
     smex
-    color-theme-solarized))
+    color-theme-solarized
+    sublime-themes))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
