@@ -19,8 +19,14 @@
 (global-set-key (kbd "s-b") 'fast-forward)
 (global-set-key (kbd "M-b") 'backward-word)
 
-;; buffer navigation
 
+;; make scrolling more smooth
+(global-set-key (kbd "<wheel-down>") 'scroll-up-line)
+(global-set-key (kbd "<wheel-up>") 'scroll-down-line)
+(global-set-key (kbd "s-<wheel-down>") 'scroll-up)
+(global-set-key (kbd "s-<wheel-up>") 'scroll-down)
+
+;; buffer navigation
 (global-set-key (kbd "C-x <right>") 'next-non-emacs-buffer)
 (global-set-key (kbd "C-x <left>") 'previous-non-emacs-buffer)
 (global-set-key (kbd "C-x C-<right>") 'next-non-emacs-buffer)
