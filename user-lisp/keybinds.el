@@ -32,6 +32,8 @@
 (global-set-key (kbd "C-x C-<right>") 'next-non-emacs-buffer)
 (global-set-key (kbd "C-x C-<left>") 'previous-non-emacs-buffer)
 
+(global-set-key (kbd "C-c o") 'switch-to-minibuffer)
+
 ;; expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 

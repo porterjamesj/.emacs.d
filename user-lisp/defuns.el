@@ -27,6 +27,14 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
+;; from the wiki http://www.emacswiki.org/emacs/MiniBuffer
+(defun switch-to-minibuffer ()
+  "Switch to minibuffer window."
+  (interactive)
+  (if (active-minibuffer-window)
+      (select-window (active-minibuffer-window))
+    (error "Minibuffer is not active")))
+
 ;; movement
 
 (defun fast-down ()
