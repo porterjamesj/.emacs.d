@@ -57,6 +57,9 @@
 (global-set-key (kbd "C-\"") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-;") 'mc/mark-all-like-this)
 
+;; text manipulation
+(global-set-key (kbd "C-c C-d") 'duplicate-current-line-or-region)
+
 ;; use C-x C-b as ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (provide 'keybinds)

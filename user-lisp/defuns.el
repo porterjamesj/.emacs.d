@@ -88,4 +88,25 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 
+(defun duplicate-current-line-or-region ()
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive)
+    (let (beg end regionp deactivate-mark)
+      (if (region-active-p)
+          (progn
+            (setq regionp t)
+            (setq beg (region-beginning) end (region-end)))
+        (setq beg (line-beginning-position) end (line-end-position)))
+      (goto-char end)
+      (when (not regionp)
+        (insert "\n"))
+      (insert (buffer-substring beg end))
+      (when regionp
+        (progn
+          (goto-char end)
+          (set-mark-command nil)
+          (goto-char (+ end (- end beg)))))))
+
 (provide 'defuns)
