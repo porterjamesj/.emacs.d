@@ -33,7 +33,9 @@
     nyan-mode
     smex
     color-theme-solarized
-    sublime-themes))
+    sublime-themes
+    gist
+    magit))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
