@@ -55,3 +55,4 @@
 (require 'setup-dired)
 (require 'setup-flycheck)
 (require 'setup-mingus)
+(require 'setup-eshell)
