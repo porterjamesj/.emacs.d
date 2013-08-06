@@ -56,3 +56,5 @@
 (require 'setup-flycheck)
 (require 'setup-mingus)
 (require 'setup-eshell)
+(require 'setup-popwin)
+(require 'setup-smartparens)
