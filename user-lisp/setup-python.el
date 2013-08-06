@@ -1,3 +1,6 @@
+;; use virtualenvwrapper
+(require 'virtualenvwrapper)
+
 (add-hook 'python-mode-hook
           (lambda ()
             (setq comint-process-echoes t)
@@ -10,5 +13,10 @@
 
 ;; set the default virtualenv so that jedi can at least load
 (setq python-shell-virtualenv-path "/Users/james/.virtualenvs/base")
+
+;; setup virtualenvwrapper
+(setq venv-location "~/.virtualenvs/")
+(venv-initialize-eshell)
+(venv-initialize-interactive-shells)
 
 (provide 'setup-python)

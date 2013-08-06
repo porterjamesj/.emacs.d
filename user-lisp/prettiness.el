@@ -18,6 +18,8 @@
 ;; Custom colors
 (load-theme 'graham t)
 
+;; virtualenv on mode line
+(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 ;; nyan-mode
 (require 'nyan-mode)
 (nyan-mode t)
