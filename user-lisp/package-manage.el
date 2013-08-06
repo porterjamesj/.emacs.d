@@ -35,7 +35,13 @@
     color-theme-solarized
     sublime-themes
     gist
-    magit))
+    magit
+    virtualenvwrapper
+    clojure-mode
+    clojure-test-mode
+    nrepl
+    popwin
+    smartparens))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
