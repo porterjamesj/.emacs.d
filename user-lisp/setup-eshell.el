@@ -1,22 +1,23 @@
 ;; there are some defuns here that I didn't extract into
 ;; defuns.el because they are pretty much used only in eshell
 
-(defun eshell-emit-prompt ()
-  "Emit a prompt if eshell is being used interactively. I
+(add-hook 'eshell-mode-hook
+(lambda ()
+  (defun eshell-emit-prompt ()
+    "Emit a prompt if eshell is being used interactively. I
 am redefining it here so that it doesn't screw up my colors"
-
-  (run-hooks 'eshell-before-prompt-hook)
-  (if (not eshell-prompt-function)
-      (set-marker eshell-last-output-end (point))
-    (let ((prompt (funcall eshell-prompt-function)))
-      (and eshell-highlight-prompt
-           (add-text-properties 0 (length prompt)
-                                '(read-only t
-                                  ;; face eshell-prompt
-                                  rear-nonsticky (face read-only))
-                                prompt))
-      (eshell-interactive-print prompt)))
-  (run-hooks 'eshell-after-prompt-hook))
+    (run-hooks 'eshell-before-prompt-hook)
+    (if (not eshell-prompt-function)
+        (set-marker eshell-last-output-end (point))
+      (let ((prompt (funcall eshell-prompt-function)))
+        (and eshell-highlight-prompt
+             (add-text-properties 0 (length prompt)
+                                  '(read-only t
+                                              ;; face eshell-prompt
+                                              rear-nonsticky (face read-only))
+                                  prompt))
+        (eshell-interactive-print prompt)))
+    (run-hooks 'eshell-after-prompt-hook))))
 
 (defun curr-dir-git-branch-string (pwd)
   "Returns current git branch as a string, or the empty string if
