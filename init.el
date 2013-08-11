@@ -58,3 +58,4 @@
 (require 'setup-eshell)
 (require 'setup-popwin)
 (require 'setup-smartparens)
+(require 'setup-ibuffer)
