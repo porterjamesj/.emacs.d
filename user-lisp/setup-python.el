@@ -4,7 +4,9 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (setq comint-process-echoes t)
-            (jedi:setup)))
+            (jedi:setup)
+            (flycheck-mode)))
+
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot nil)
 

@@ -33,5 +33,8 @@
 ;; automatically delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; allow upcase and downcase region
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 
 (provide 'defaults)
