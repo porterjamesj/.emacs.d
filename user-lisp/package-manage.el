@@ -41,7 +41,8 @@
     clojure-test-mode
     nrepl
     popwin
-    smartparens))
+    smartparens
+    phi-search))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
