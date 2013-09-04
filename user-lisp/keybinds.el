@@ -37,11 +37,6 @@
 ;; expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; inferior julia
-(add-hook 'julia-mode-hook
-          (lambda () (local-set-key (kbd "s-<return>")
-                                    'inferior-julia-send-line-or-region)))
-
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands) ;; old M-x
