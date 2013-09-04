@@ -59,3 +59,4 @@
 (require 'setup-popwin)
 (require 'setup-smartparens)
 (require 'setup-ibuffer)
+(require 'setup-mc)

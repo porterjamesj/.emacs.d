@@ -52,11 +52,6 @@
 ;; hide show mode
 (global-set-key (kbd "C-c h") 'hs-toggle-hiding)
 
-;; multiple cursors
-(global-set-key (kbd "C-'") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-\"") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-;") 'mc/mark-all-like-this)
-
 ;; text manipulation
 (global-set-key (kbd "C-c C-d") 'duplicate-current-line-or-region)
 
