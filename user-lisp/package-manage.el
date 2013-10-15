@@ -42,7 +42,8 @@
     nrepl
     popwin
     smartparens
-    phi-search))
+    phi-search
+    erc-hl-nicks))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
