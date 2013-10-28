@@ -8,3 +8,4 @@ auto-comp-list/*
 url/*
 secrets.el
 tramp
+.DS_Store

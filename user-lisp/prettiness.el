@@ -17,7 +17,7 @@
                     "Consolas-15"))
 
 ;; Custom colors
-(load-theme 'graham t)
+(load-theme 'spolsky t)
 
 ;; virtualenv on mode line
 (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
