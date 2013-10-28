@@ -21,8 +21,8 @@
 
 (defvar julia-mode-syntax-table
   (let ((table (make-syntax-table)))
-    (modify-syntax-entry ?_ "_" table)   ; underscores in words
-    (modify-syntax-entry ?@ "_" table)
+    (modify-syntax-entry ?_ "w" table)   ; underscores in words
+    (modify-syntax-entry ?@ "w" table)
     (modify-syntax-entry ?. "_" table)
     (modify-syntax-entry ?# "<" table)   ; #  single-line comment start
     (modify-syntax-entry ?\n ">" table)  ; \n single-line comment end
@@ -259,9 +259,28 @@ Do not move back beyond MIN."
   (set (make-local-variable 'indent-line-function) 'julia-indent-line)
   (set (make-local-variable 'julia-basic-offset) 4)
   (setq indent-tabs-mode nil)
-  (setq major-mode 'julia-mode)
-  (setq mode-name "julia")
-  (run-hooks 'julia-mode-hook))
+  (setq imenu-generic-expression julia-imenu-generic-expression)
+  (imenu-add-to-menubar "Imenu"))
+
+;;; IMENU
+(defvar julia-imenu-generic-expression
+  ;; don't use syntax classes, screws egrep
+  '(("Function (_)" "[ \t]*function[ \t]+\\(_[^ \t\n]*\\)" 1)
+    ("Function" "^[ \t]*function[ \t]+\\([^_][^\t\n]*\\)" 1)
+    ("Const" "[ \t]*const \\([^ \t\n]*\\)" 1)
+    ("Type"  "^[ \t]*[a-zA-Z0-9_]*type[a-zA-Z0-9_]* \\([^ \t\n]*\\)" 1)
+    ("Require"      " *\\(\\brequire\\)(\\([^ \t\n)]*\\)" 2)
+    ("Include"      " *\\(\\binclude\\)(\\([^ \t\n)]*\\)" 2)
+    ;; ("Classes" "^.*setClass(\\(.*\\)," 1)
+    ;; ("Coercions" "^.*setAs(\\([^,]+,[^,]*\\)," 1) ; show from and to
+    ;; ("Generics" "^.*setGeneric(\\([^,]*\\)," 1)
+    ;; ("Methods" "^.*set\\(Group\\|Replace\\)?Method(\"\\(.+\\)\"," 2)
+    ;; ;;[ ]*\\(signature=\\)?(\\(.*,?\\)*\\)," 1)
+    ;; ;;
+    ;; ;;("Other" "^\\(.+\\)\\s-*<-[ \t\n]*[^\\(function\\|read\\|.*data\.frame\\)]" 1)
+    ;; ("Package" "^.*\\(library\\|require\\)(\\(.*\\)," 2)
+    ;; ("Data" "^\\(.+\\)\\s-*<-[ \t\n]*\\(read\\|.*data\.frame\\).*(" 1)))
+    ))
 
 ;; Inferior julia
 ;; Heavily inspired by inferior-ghci and isend-mode
@@ -281,8 +300,8 @@ Note that this should be surrounded by *s in order to work properly")
   (interactive)
   (if (not (comint-check-proc inferior-julia-buffer))
       (progn
-	(funcall 'make-comint 
-		 (replace-regexp-in-string "\\*" "" inferior-julia-buffer) 
+	(funcall 'make-comint
+		 (replace-regexp-in-string "\\*" "" inferior-julia-buffer)
 		 (expand-file-name inferior-julia-program))
 	(pop-to-buffer inferior-julia-buffer))
     (pop-to-buffer inferior-julia-buffer)))
@@ -318,9 +337,7 @@ Note that this should be surrounded by *s in order to work properly")
       (inferior-julia-send-string (concat "reload(\"" file "\")\n"))
       ;; change directories if necessary
       (if cd (inferior-julia-send-string (concat "cd(\"" dir "\")")))
-      (if inferior-julia-load-command 
+      (if inferior-julia-load-command
 	  (inferior-julia-send-string inferior-julia-load-command)))))
 
 (provide 'julia-mode)
-
-;;; julia-mode.el ends here
