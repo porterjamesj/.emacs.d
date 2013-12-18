@@ -109,4 +109,18 @@ there's a region, all lines that region covers will be duplicated."
           (set-mark-command nil)
           (goto-char (+ end (- end beg)))))))
 
+;; misc
+
+(defun calc-eval-region (arg beg end)
+  "Calculate the region and display the result in the echo area.
+With prefix ARG non-nil, insert the result at the end of region."
+  (interactive "P\nr")
+  (let* ((expr (buffer-substring-no-properties beg end))
+         (result (calc-eval expr)))
+    (if (null arg)
+        (message "%s = %s" expr result)
+      (goto-char end)
+      (save-excursion
+        (insert (concat " = " result))))))
+
 (provide 'defuns)

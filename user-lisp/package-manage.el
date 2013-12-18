@@ -16,7 +16,7 @@
 
 ;; packages I use
 (defvar user-packages
-  '(;;auto-complete
+  '(auto-complete
     dired-details
     epc
     expand-region
@@ -39,11 +39,12 @@
     virtualenvwrapper
     clojure-mode
     clojure-test-mode
-    nrepl
+    cider
     popwin
     smartparens
     phi-search
-    erc-hl-nicks))
+    erc-hl-nicks
+    yaml-mode))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)

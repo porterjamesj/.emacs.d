@@ -17,6 +17,8 @@ entering mingus."
   (mingus-goto-current-song))
 (ad-activate 'mingus)
 
+(add-hook 'mingus-mode-hook 'toggle-truncate-lines)
+
 ;; mingus specific keybinds
 
 (global-set-key (kbd "C-c v") 'mpd-set-volume)

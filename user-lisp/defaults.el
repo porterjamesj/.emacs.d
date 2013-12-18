@@ -37,4 +37,7 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
+;; highlight the current line
+(global-hl-line-mode)
+
 (provide 'defaults)
