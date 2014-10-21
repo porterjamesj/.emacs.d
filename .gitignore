@@ -7,5 +7,9 @@ ac-comphist.dat
 auto-comp-list/*
 url/*
 secrets.el
+custom.el
 tramp
+.cask/*
+abbrev_defs
+request/*
 .DS_Store
