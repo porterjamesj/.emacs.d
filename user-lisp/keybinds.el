@@ -102,6 +102,13 @@
 
 ;; use C-x C-b as ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; movement with center
+(global-set-key (kbd "C-H-n") 'next-line-with-center)
+(global-set-key (kbd "C-H-p") 'previous-line-with-center)
+(global-set-key (kbd "M-H-n") 'forward-paragraph-with-center)
+(global-set-key (kbd "M-H-p") 'backward-paragraph-with-center)
+
 ;; M-dash dammit
 (defun insert-m-dash ()
   (interactive)
