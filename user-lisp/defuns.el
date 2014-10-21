@@ -11,7 +11,7 @@
     (kill-ring-save (line-beginning-position) (line-end-position))))
 
 (defun rename-current-buffer-file ()
-  "Renames current buffer and file it is visiting."
+  "renames current buffer and file it is visiting."
   (interactive)
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
@@ -78,6 +78,29 @@
          (not (eq (buffer-name) tmp-orig))
          (emacs-buffer-p (buffer-name)))
         (previous-non-emacs-buffer tmp-orig))))
+(defun previous-line-with-center ()
+  (interactive)
+  (ignore-errors
+    (previous-line)
+    (recenter)))
+
+(defun next-line-with-center ()
+  (interactive)
+  (ignore-errors
+    (next-line)
+    (recenter)))
+
+(defun forward-paragraph-with-center ()
+  (interactive)
+  (ignore-errors
+    (forward-paragraph)
+    (recenter)))
+
+(defun backward-paragraph-with-center ()
+  (interactive)
+  (ignore-errors
+    (backward-paragraph)
+    (recenter)))
 
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
