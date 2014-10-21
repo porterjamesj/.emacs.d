@@ -45,7 +45,8 @@
   (erc
    :server "irc.freenode.net"
    :port 6667
-   :nick "jamesjporter"))
+   :nick "jamesjporter"
+   :fullname "James J Porter"))
 
 ;; lac stuff
 ;; launch lac command
