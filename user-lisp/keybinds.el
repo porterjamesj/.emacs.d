@@ -77,10 +77,10 @@
 (define-key active-region-mode-map (kbd "j") 'backward-word)
 
 ;; arrow keys are evil, don't use them
-(global-set-key (kbd "<up>") nil)
-(global-set-key (kbd "<down>") nil)
-(global-set-key (kbd "<left>") nil)
-(global-set-key (kbd "<right>") nil)
+;; (global-set-key (kbd "<up>") nil)
+;; (global-set-key (kbd "<down>") nil)
+;; (global-set-key (kbd "<left>") nil)
+;; (global-set-key (kbd "<right>") nil)
 
 (global-set-key (kbd "C-c o") 'switch-to-minibuffer)
 
