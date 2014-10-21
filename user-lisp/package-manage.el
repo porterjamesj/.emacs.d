@@ -44,7 +44,8 @@
     smartparens
     phi-search
     erc-hl-nicks
-    yaml-mode))
+    yaml-mode
+    multi-web-mode))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
