@@ -102,4 +102,10 @@
 
 ;; use C-x C-b as ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+;; M-dash dammit
+(defun insert-m-dash ()
+  (interactive)
+  (insert-char ?\—))
+
+(global-set-key (kbd "M-_") 'insert-m-dash)
 (provide 'keybinds)
