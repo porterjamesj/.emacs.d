@@ -61,3 +61,6 @@
 (require 'setup-mc)
 (require 'setup-phi-search)
 (require 'setup-irc)
+
+;; move to home
+(setq default-directory (expand-file-name "~"))
