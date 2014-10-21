@@ -32,7 +32,7 @@
     multiple-cursors
     nyan-mode
     smex
-    color-theme-solarized
+    solarized-theme
     sublime-themes
     gist
     magit
