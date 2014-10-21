@@ -1,6 +1,9 @@
 ;; js2-mode
 (add-hook 'js-mode-hook 'js2-minor-mode)
 
+;; work with react jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
+
 ;; set javascript mode tab width to 2
 (setq js-indent-level 2)
 
