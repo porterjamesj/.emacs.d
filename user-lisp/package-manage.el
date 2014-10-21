@@ -45,7 +45,8 @@
     phi-search
     erc-hl-nicks
     yaml-mode
-    multi-web-mode))
+    multi-web-mode
+    julia-mode))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
