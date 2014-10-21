@@ -17,6 +17,9 @@
                     "Consolas-15"))
 
 ;; Custom colors
+(setq solarized-high-contrast-mode-line t)
+(setq solarized-use-less-bold t)
+
 (load-theme 'solarized-dark t)
 
 ;; virtualenv on mode line
