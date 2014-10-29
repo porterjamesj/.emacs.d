@@ -114,5 +114,8 @@
   (interactive)
   (insert-char ?\—))
 
+;; magit status
+(global-set-key (kbd "C-c s") 'magit-status)
+
 (global-set-key (kbd "M-_") 'insert-m-dash)
 (provide 'keybinds)
