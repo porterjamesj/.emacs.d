@@ -61,6 +61,7 @@
 (require 'setup-mc)
 (require 'setup-phi-search)
 (require 'setup-irc)
+(require 'setup-clojure)
 
 ;; move to home
 (setq default-directory (expand-file-name "~"))
