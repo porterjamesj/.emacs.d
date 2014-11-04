@@ -62,7 +62,7 @@
 (require 'setup-ibuffer)
 (require 'setup-mc)
 (require 'setup-phi-search)
-(require 'setup-irc)
+;; (require 'setup-irc)
 (require 'setup-clojure)
 
 ;; move to home
