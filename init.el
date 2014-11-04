@@ -10,7 +10,7 @@
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 
-;; put .emacs.d and user-lisp directory on load-path
+;; put user-lisp directory on load-path
 (add-to-list 'load-path "~/.emacs.d/user-lisp")
 
 (let ((base "~/.emacs.d/lib"))
@@ -36,6 +36,8 @@
 (require 'keybinds)
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(unless (file-exists-p custom-file)
+  (shell-command (concat "touch " custom-file)))
 (load custom-file)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
