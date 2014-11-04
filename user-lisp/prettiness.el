@@ -3,7 +3,10 @@
 
 ;; Set font
 (if window-system
-    (set-face-attribute 'default nil :font "Source Code Pro-13")
+    (if (member "Source Code Pro" (font-family-list))
+        (set-face-attribute 'default nil :font "Source Code Pro-13")
+      (if (member "Ubuntu Mono" (font-family-list))
+          (set-face-attribute 'default nil :font "Ubuntu Mono-12")))
 
   ;; Use Consolas as fallback for Greek
   (set-fontset-font "fontset-default"
