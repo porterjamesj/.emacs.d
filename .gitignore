@@ -13,3 +13,5 @@ tramp
 abbrev_defs
 request/*
 .DS_Store
+ido.last
+smex-items
