@@ -9,4 +9,7 @@
       (setenv "PATH" path)
       (setq exec-path (split-string path ":"))))
 
+;; use json-mode for avsc files
+(add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
+
 (provide 'misc)
