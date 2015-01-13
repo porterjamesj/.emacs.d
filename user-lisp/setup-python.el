@@ -22,6 +22,6 @@
 (venv-initialize-eshell)
 (venv-initialize-interactive-shells)
 
-(add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python))
+(add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python-mode))
 
 (provide 'setup-python)
