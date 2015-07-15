@@ -132,4 +132,6 @@
 
 (put-clojure-indent 'build-all 'defun)
 
+(setq lisp-indent-offset 2)
+
 (provide 'setup-clojure)
