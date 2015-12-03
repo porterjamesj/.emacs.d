@@ -32,13 +32,13 @@
     multiple-cursors
     nyan-mode
     smex
-    solarized-theme
+     ;; solarized-theme
+     color-theme-solarized
     sublime-themes
     gist
     magit
     virtualenvwrapper
     clojure-mode
-    clojure-test-mode
     cider
     popwin
     smartparens

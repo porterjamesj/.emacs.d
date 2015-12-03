@@ -19,14 +19,26 @@
                           (decode-char 'ucs #x03ff))
                     "Consolas-15"))
 
-;; Custom colors
-(setq solarized-high-contrast-mode-line t)
-(setq solarized-use-less-bold t)
 
-(load-theme 'solarized-dark t)
+;; stuff for the bbatsov solarized version, which i used to use but
+;; doesnt seem happy to run in a terminal
+;; (setq solarized-high-contrast-mode-line t)
+;; (setq solarized-use-less-bold t)
+;; (load-theme 'solarized-dark t)
+
+(require 'color-theme)
+(require 'color-theme-solarized)
+(load-theme 'solarized t)
+
+;; set solarized to dark
+(setq solarized-style 'dark)
+(set-frame-parameter nil 'background-mode solarized-style)
+(set-terminal-parameter nil 'background-mode solarized-style)
+(enable-theme 'solarized)
 
 ;; virtualenv on mode line
 (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+
 ;; nyan-mode
 (require 'nyan-mode)
 (nyan-mode t)
