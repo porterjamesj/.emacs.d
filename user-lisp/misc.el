@@ -12,4 +12,7 @@
 ;; use json-mode for avsc files
 (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
 
+;; TODO give magit its own file
+(setq magit-push-always-verify nil)
+
 (provide 'misc)
