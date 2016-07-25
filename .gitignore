@@ -15,3 +15,5 @@ request/*
 .DS_Store
 ido.last
 smex-items
+games/
+projectile-bookmarks.eld
