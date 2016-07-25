@@ -17,36 +17,38 @@
 ;; packages I use
 (defvar user-packages
   '(auto-complete
-    dired-details
-    epc
-    expand-region
-    ido-ubiquitous
-    flx
-    flx-ido
-    flycheck
-    jedi
-    jinja2-mode
-    js2-mode
-    json-mode
-    markdown-mode
-    multiple-cursors
-    nyan-mode
-    smex
+     dired-details
+     epc
+     expand-region
+     ido-ubiquitous
+     flx
+     flx-ido
+     flycheck
+     jedi
+     jinja2-mode
+     js2-mode
+     json-mode
+     markdown-mode
+     multiple-cursors
+     nyan-mode
+     smex
      ;; solarized-theme
      color-theme-solarized
-    sublime-themes
-    gist
-    magit
-    virtualenvwrapper
-    clojure-mode
-    cider
-    popwin
-    smartparens
-    phi-search
-    erc-hl-nicks
-    yaml-mode
-    multi-web-mode
-    julia-mode))
+     sublime-themes
+     gist
+     magit
+     virtualenvwrapper
+     clojure-mode
+     cider
+     popwin
+     smartparens
+     phi-search
+     erc-hl-nicks
+     yaml-mode
+     multi-web-mode
+     julia-mode
+     dockerfile-mode
+     go-mode))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
