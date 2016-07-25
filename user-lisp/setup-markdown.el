@@ -12,4 +12,13 @@
 (define-key markdown-mode-map (kbd "M-f") 'forward-word)
 (define-key markdown-mode-map (kbd "M-b") 'backward-word)
 
+;; GAHHHHH
+(define-key markdown-mode-map (kbd "C-e") 'move-end-of-line)
+(define-key markdown-mode-map (kbd "M-a") 'move-beginning-of-line)
+
+(add-hook 'markdown-mode-hook
+  (lambda ()
+    (flyspell-mode)
+    (auto-fill-mode)))
+
 (provide 'setup-markdown)
