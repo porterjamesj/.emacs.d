@@ -23,7 +23,13 @@
 
 (setq
   python-shell-interpreter "ipython"
-  python-shell-interpreter-args "-i")
+  python-shell-interpreter-args "--simple-prompt -i")
+
+
+;; this is necessary for hilarious reasons to make it work with IPython 5
+(setq python-shell-completion-string-code "print(';'.join(__PYTHON_EL_get_completions('''%s''')))\n")
+
+
 
 (add-hook 'comint-mode-hook
   (function (lambda ()
