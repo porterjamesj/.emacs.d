@@ -19,6 +19,7 @@
 (add-hook 'markdown-mode-hook
   (lambda ()
     (flyspell-mode)
+    (flyspell-buffer)
     (auto-fill-mode)))
 
 (provide 'setup-markdown)
