@@ -109,6 +109,10 @@
 (global-set-key (kbd "M-H-n") 'forward-paragraph-with-center)
 (global-set-key (kbd "M-H-p") 'backward-paragraph-with-center)
 
+;; mark next
+(global-set-key (kbd "C-c C-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this)
+
 ;; M-dash dammit
 (defun insert-m-dash ()
   (interactive)
