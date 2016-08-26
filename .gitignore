@@ -16,4 +16,5 @@ request/*
 ido.last
 smex-items
 games/
+var/
 projectile-bookmarks.eld
