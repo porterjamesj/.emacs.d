@@ -65,6 +65,8 @@
 ;; (require 'setup-irc)
 (require 'setup-clojure)
 (require 'setup-yaml)
+(require 'setup-go)
+(require 'setup-undo-tree)
 
 ;; move to home
 (setq default-directory (expand-file-name "~"))
