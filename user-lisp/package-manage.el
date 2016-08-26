@@ -48,7 +48,9 @@
      multi-web-mode
      julia-mode
      dockerfile-mode
-     go-mode))
+     go-mode
+     gist
+     undo-tree))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
