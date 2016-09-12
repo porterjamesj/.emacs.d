@@ -5,8 +5,7 @@
           (lambda ()
             (setq comint-process-echoes t)
             ;; (jedi:setup)
-            (unless (file-remote-p default-directory)
-              (flycheck-mode))))
+            (flycheck-mode-if-not-remote)))
 
 ;; (setq jedi:setup-keys t)
 ;; (setq jedi:complete-on-dot nil)
