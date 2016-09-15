@@ -50,7 +50,10 @@
      dockerfile-mode
      go-mode
      gist
-     undo-tree))
+     undo-tree
+     browse-at-remote
+     ag
+     powerline))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)

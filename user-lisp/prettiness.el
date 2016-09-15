@@ -36,8 +36,9 @@
 (set-terminal-parameter nil 'background-mode solarized-style)
 (enable-theme 'solarized)
 
+(powerline-nano-theme)
 ;; virtualenv on mode line
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+(setq-default mode-line-format (-concat '("[venv:" (:exec venv-current-name) "]") mode-line-format))
 
 ;; nyan-mode
 (require 'nyan-mode)
