@@ -16,15 +16,15 @@
 
 ;; packages I use
 (defvar user-packages
-  '(auto-complete
-     dired-details
+  '(dired-details
      epc
      expand-region
      ido-ubiquitous
      flx
      flx-ido
      flycheck
-     jedi
+     company
+     company-jedi
      jinja2-mode
      js2-mode
      json-mode

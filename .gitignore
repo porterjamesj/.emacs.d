@@ -18,3 +18,4 @@ smex-items
 games/
 var/
 projectile-bookmarks.eld
+.python-environments/

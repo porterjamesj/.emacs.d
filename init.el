@@ -45,7 +45,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'setup-python)
-(require 'setup-ac)
+(require 'setup-company)
 (require 'setup-ido)
 (require 'setup-tramp)
 (require 'setup-smex)

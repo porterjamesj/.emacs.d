@@ -1,14 +1,17 @@
 ;; use virtualenvwrapper
 (require 'virtualenvwrapper)
 
+(global-company-mode)
+
 (add-hook 'python-mode-hook
           (lambda ()
             (setq comint-process-echoes t)
-            ;; (jedi:setup)
-            (flycheck-mode-if-not-remote)))
+            (flycheck-mode-if-not-remote)
+            (add-to-list 'company-backends 'company-jedi)))
 
-;; (setq jedi:setup-keys t)
-;; (setq jedi:complete-on-dot nil)
+(when (not (file-directory-p
+             (locate-user-emacs-file ".python-environments")))
+  (jedi:install-server))
 
 ;; use flake8 for checking
 (setq python-check-command "flake8")
@@ -27,7 +30,6 @@
 
 ;; this is necessary for hilarious reasons to make it work with IPython 5
 (setq python-shell-completion-string-code "print(';'.join(__PYTHON_EL_get_completions('''%s''')))\n")
-
 
 
 (add-hook 'comint-mode-hook
