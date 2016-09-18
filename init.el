@@ -67,5 +67,5 @@
 (require 'setup-go)
 (require 'setup-undo-tree)
 
-;; move to home
-(setq default-directory (expand-file-name "~"))
+(if window-system
+  (setq default-directory (expand-file-name "~")))
