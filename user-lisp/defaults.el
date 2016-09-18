@@ -25,6 +25,9 @@
 ;; show matching parens
 (show-paren-mode 1)
 
+;; match them automatically
+(electric-pair-mode 1)
+
 ;; setup whitespace mode
 (custom-set-variables
   '(whitespace-line-column 80)
