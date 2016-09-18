@@ -2,6 +2,13 @@
 ;; James Porter
 ;; 2013
 
+;; this prevents emacs from trying to autoinsert a
+;; (package-initialize) call here, which i do in
+;; user-lisp/package-manage.el.
+;;
+;; there may be a more official way of doing this, i am not sure
+(setq package--init-file-ensured 't)
+
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
