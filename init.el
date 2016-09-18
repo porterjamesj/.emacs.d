@@ -66,6 +66,7 @@
 (require 'setup-yaml)
 (require 'setup-go)
 (require 'setup-undo-tree)
+(require 'setup-toggle-quotes)
 
 (if window-system
   (setq default-directory (expand-file-name "~")))

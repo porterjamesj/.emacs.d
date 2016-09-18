@@ -53,7 +53,8 @@
      undo-tree
      browse-at-remote
      ag
-     powerline))
+     powerline
+     toggle-quotes))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
