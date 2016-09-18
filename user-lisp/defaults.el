@@ -43,4 +43,7 @@
 ;; highlight the current line
 (global-hl-line-mode)
 
+;; never open new frames in coca
+(setq ns-pop-up-frames nil)
+
 (provide 'defaults)
