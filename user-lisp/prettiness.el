@@ -1,6 +1,8 @@
 ;; prettiness.el
 ;; Visual settings and appearance tweaks
 
+(require 'dash)
+
 ;; Set font
 (if window-system
     (if (member "Source Code Pro" (font-family-list))
