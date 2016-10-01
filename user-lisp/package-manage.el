@@ -22,6 +22,7 @@
      ido-ubiquitous
      flx
      flx-ido
+     ido-grid-mode
      flycheck
      company
      company-jedi
