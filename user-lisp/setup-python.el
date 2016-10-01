@@ -9,8 +9,11 @@
             (flycheck-mode-if-not-remote)
             (add-to-list 'company-backends 'company-jedi)))
 
-(when (not (file-directory-p
-             (locate-user-emacs-file ".python-environments")))
+(when
+  (and
+    (not (file-directory-p
+           (locate-user-emacs-file ".python-environments")))
+    (executable-find "virtualenv"))
   (jedi:install-server))
 
 ;; use flake8 for checking
