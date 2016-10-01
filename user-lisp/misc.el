@@ -2,12 +2,13 @@
 ;; Miscellaneous settings that don't fit in anywhere else and would clutter
 ;; up the init file
 
-;; Make emacs have same path environment variable as login shell
-(if (not (getenv "TERM_PROGRAM"))
-    (let ((path (shell-command-to-string
-                 "$SHELL -cl \"printf %s \\\"\\\$PATH\\\"\"")))
-      (setenv "PATH" path)
-      (setq exec-path (split-string path ":"))))
+(require 'exec-path-from-shell)
+
+;; Copy some env variables from the default shell
+(when window-system
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs
+    '("GOPATH" "GOROOT")))
 
 ;; use json-mode for avsc files
 (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))

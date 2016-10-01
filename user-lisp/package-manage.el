@@ -54,7 +54,8 @@
      browse-at-remote
      ag
      powerline
-     toggle-quotes))
+     toggle-quotes
+     exec-path-from-shell))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
