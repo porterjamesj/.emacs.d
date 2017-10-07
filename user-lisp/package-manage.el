@@ -6,7 +6,9 @@
 (defvar melpa '("melpa" . "http://melpa.org/packages/"))
 
 ;; Add third-party repos
-(add-to-list 'package-archives marmalade)
+
+;; comment out marmalade for now because it's SSL situation is all jacked up
+;;(add-to-list 'package-archives marmalade)
 (add-to-list 'package-archives melpa t)
 
 (package-initialize)
