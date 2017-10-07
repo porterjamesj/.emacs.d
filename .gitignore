@@ -19,3 +19,4 @@ games/
 var/
 projectile-bookmarks.eld
 .python-environments/
+network-security.data
