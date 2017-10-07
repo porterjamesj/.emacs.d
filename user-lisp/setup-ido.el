@@ -1,13 +1,15 @@
 (require 'ido)
 (require 'flx-ido)
 (require 'ido-grid-mode)
-(require 'ido-ubiquitous)
+(require 'ido-completing-read+)
+(require 'smex)
 
 (ido-mode t)
+(ido-everywhere 1)
 
 (flx-ido-mode 1)
 
-(ido-ubiquitous t)
+(ido-ubiquitous-mode 1)
 
 (ido-grid-mode 1)
 
@@ -22,5 +24,7 @@
             (define-key ido-completion-map (kbd "C-n") 'ido-grid-mode-down)
             (define-key ido-completion-map (kbd "<up>") 'ido-grid-mode-up)
             (define-key ido-completion-map (kbd "<down>") 'ido-grid-mode-down)))
+
+(smex-initialize)
 
 (provide 'setup-ido)

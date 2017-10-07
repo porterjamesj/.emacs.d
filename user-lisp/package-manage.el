@@ -21,7 +21,7 @@
   '(dired-details
      epc
      expand-region
-     ido-ubiquitous
+     ido-completing-read+
      flx
      flx-ido
      ido-grid-mode

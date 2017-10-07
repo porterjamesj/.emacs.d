@@ -55,7 +55,6 @@
 (require 'setup-company)
 (require 'setup-ido)
 (require 'setup-tramp)
-(require 'setup-smex)
 (require 'setup-julia)
 (require 'setup-js)
 (require 'setup-markdown)
