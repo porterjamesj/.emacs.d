@@ -26,7 +26,7 @@
 (setq js2-global-externs '("module" "require" "$" "_"
                            "window" "$SCRIPT_ROOT" "d3"
                            "describe" "it" "exports"
-                           "chrome" "fetch"))
+                           "chrome" "fetch" "React" "RC" "HS"))
 
 (setq js2-strict-trailing-comma-warning nil)
 

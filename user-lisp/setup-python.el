@@ -1,5 +1,6 @@
 ;; use virtualenvwrapper
 (require 'virtualenvwrapper)
+(require 'flycheck-pycheckers)
 
 (global-company-mode)
 
@@ -9,6 +10,9 @@
             (flycheck-mode-if-not-remote)
             (add-to-list 'company-backends 'company-jedi)))
 
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+
 (when
   (and
     (not (file-directory-p
@@ -16,7 +20,17 @@
     (executable-find "virtualenv"))
   (jedi:install-server))
 
-;; use flake8 for checking
+;; NOTE this will only work with python 3 and if mypy is installed
+;; what we should do is figure out some way to detect our situation
+;; (what python version are we in, is mypy installed, etc.) and set
+;; this variable accordingly
+;;
+;; could use buffer local variables to achieve this for different
+;; buffers inhttps://www.emacswiki.org/emacs/BufferLocalVariable
+(setq flycheck-pycheckers-checkers '(flake8))
+
+
+;; use flake8 for checking if we're using the default pyflakes checker
 (setq python-check-command "flake8")
 
 ;; setup virtualenvwrapper
