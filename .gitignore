@@ -17,6 +17,7 @@ ido.last
 smex-items
 games/
 var/
+transient/
 projectile-bookmarks.eld
 .python-environments/
 network-security.data

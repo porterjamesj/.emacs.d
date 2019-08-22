@@ -58,7 +58,8 @@
      ag
      powerline
      toggle-quotes
-     exec-path-from-shell))
+     exec-path-from-shell
+     projectile))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)

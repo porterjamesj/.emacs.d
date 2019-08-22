@@ -73,6 +73,8 @@
 (require 'setup-go)
 (require 'setup-undo-tree)
 (require 'setup-toggle-quotes)
+(require 'setup-ruby)
+(require 'setup-projectile)
 
 (if window-system
   (setq default-directory (expand-file-name "~")))

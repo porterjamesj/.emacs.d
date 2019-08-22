@@ -3,6 +3,15 @@
 
 ;; general
 
+
+(defun ido-find-file-or-projectile-find-file ()
+  "calls either find-file or projectile-find-file depending
+  whether we're in a projectile project or not"
+  (interactive)
+  (if (projectile-project-root)
+    (projectile-find-file)
+    (ido-find-file)))
+
 (defun copy-line-or-region ()
   "copies the region if active, the current line if not."
   (interactive)
@@ -78,6 +87,7 @@
          (not (eq (buffer-name) tmp-orig))
          (emacs-buffer-p (buffer-name)))
         (previous-non-emacs-buffer tmp-orig))))
+
 (defun previous-line-with-center ()
   (interactive)
   (ignore-errors

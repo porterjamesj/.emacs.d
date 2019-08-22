@@ -4,6 +4,7 @@
 (setq ns-esc-modifier 'hyper)
 
 ;;  buffers and files
+(global-set-key (kbd "C-x C-f") 'ido-find-file-or-projectile-find-file)
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 
