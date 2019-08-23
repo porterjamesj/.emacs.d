@@ -2,7 +2,7 @@
 
 (setq projectile-project-search-path '("~/src/" "~/work/" "~"))
 
-(define-key projectiple-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (define-key projectile-mode-map (kbd "s-p s") 'projectile-ag)

@@ -3,23 +3,23 @@
 
 (require 'dash)
 
-;; Set font
 (if window-system
+  (progn
     (if (member "Source Code Pro" (font-family-list))
-        (set-face-attribute 'default nil :font "Source Code Pro-13")
+      (set-face-attribute 'default nil :font "Source Code Pro-13")
       (if (member "Ubuntu Mono" (font-family-list))
-          (set-face-attribute 'default nil :font "Ubuntu Mono-12")))
+        (set-face-attribute 'default nil :font "Ubuntu Mono-12")))
 
-  ;; Use Consolas as fallback for Greek
-  (set-fontset-font "fontset-default"
-                    (cons (decode-char 'ucs #x1f00)
-                          (decode-char 'ucs #x1fff))
-                    "Consolas-15")
+    ;; Use Consolas as fallback for Greek
+    (set-fontset-font "fontset-default"
+      (cons (decode-char 'ucs #x1f00)
+        (decode-char 'ucs #x1fff))
+      "Consolas-15")
 
-  (set-fontset-font "fontset-default"
-                    (cons (decode-char 'ucs #x0370)
-                          (decode-char 'ucs #x03ff))
-                    "Consolas-15"))
+    (set-fontset-font "fontset-default"
+      (cons (decode-char 'ucs #x0370)
+        (decode-char 'ucs #x03ff))
+      "Consolas-15")))
 
 
 ;; stuff for the bbatsov solarized version, which i used to use but
@@ -28,7 +28,6 @@
 ;; (setq solarized-use-less-bold t)
 ;; (load-theme 'solarized-dark t)
 
-(require 'color-theme)
 (require 'color-theme-solarized)
 (load-theme 'solarized t)
 

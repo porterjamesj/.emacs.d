@@ -20,15 +20,6 @@
 ;; put user-lisp directory on load-path
 (add-to-list 'load-path "~/.emacs.d/user-lisp")
 
-(let ((base "~/.emacs.d/lib"))
-  (add-to-list 'load-path base)
-  (dolist (f (directory-files base))
-    (let ((name (concat base "/" f)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list 'load-path name)))))
-
 ;; Configure package management and install/load third party packages
 (require 'package-manage)
 ;; Emacs defaults
@@ -61,7 +52,6 @@
 (require 'setup-prog-modes)
 (require 'setup-dired)
 (require 'setup-flycheck)
-(require 'setup-mingus)
 (require 'setup-eshell)
 (require 'setup-popwin)
 (require 'setup-ibuffer)
