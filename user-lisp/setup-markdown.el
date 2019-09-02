@@ -1,4 +1,5 @@
 (require 'markdown-mode)
+(require 'flyspell)
 
 ;; add correct extensions for markdown mode
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
@@ -19,7 +20,6 @@
 (add-hook 'markdown-mode-hook
   (lambda ()
     (flyspell-mode)
-    (flyspell-buffer)
     (auto-fill-mode)))
 
 (provide 'setup-markdown)

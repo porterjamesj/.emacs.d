@@ -20,6 +20,15 @@
 ;; put user-lisp directory on load-path
 (add-to-list 'load-path "~/.emacs.d/user-lisp")
 
+(let ((base "~/.emacs.d/vendor"))
+  (add-to-list 'load-path base)
+  (dolist (f (directory-files base))
+    (let ((name (concat base "/" f)))
+      (when (and (file-directory-p name)
+              (not (equal f ".."))
+              (not (equal f ".")))
+        (add-to-list 'load-path name)))))
+
 ;; Configure package management and install/load third party packages
 (require 'package-manage)
 ;; Emacs defaults
@@ -65,6 +74,7 @@
 (require 'setup-toggle-quotes)
 (require 'setup-ruby)
 (require 'setup-projectile)
+(require 'setup-flyspell)
 
 (if window-system
   (setq default-directory (expand-file-name "~")))

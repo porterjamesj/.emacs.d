@@ -59,7 +59,9 @@
      powerline
      toggle-quotes
      exec-path-from-shell
-     projectile))
+     projectile
+     flyspell-correct
+     flyspell-correct-popup))
 
 ;; install any packages that aren't found
 (dolist (p user-packages)
