@@ -22,9 +22,12 @@
       "Consolas-15")))
 
 ;; TODO pretty ugly in terminal
-(setq solarized-high-contrast-mode-line t)
-(setq solarized-use-less-bold t)
-(load-theme 'solarized-dark t)
+(if (display-graphic-p)
+  (progn
+    (setq solarized-high-contrast-mode-line t)
+    (setq solarized-use-less-bold t)
+    (load-theme 'solarized-dark t))
+  (load-theme 'wombat t))
 
 (powerline-nano-theme)
 ;; virtualenv on mode line
