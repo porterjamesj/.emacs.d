@@ -18,14 +18,14 @@
 
 ;; packages I use
 (defvar user-packages
-  '(dired-details
-     epc
+  '(epc
      expand-region
      ido-completing-read+
      flx
      flx-ido
      ido-grid-mode
      flycheck
+     flycheck-pycheckers
      company
      company-jedi
      jinja2-mode
@@ -35,8 +35,7 @@
      multiple-cursors
      nyan-mode
      smex
-     ;; solarized-theme
-     color-theme-solarized
+     solarized-theme
      sublime-themes
      gist
      magit
