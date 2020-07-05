@@ -16,4 +16,7 @@
 ;; TODO give magit its own file
 (setq magit-push-always-verify nil)
 
+
+(setq tidal-boot-script-path "~/.cabal/share/x86_64-osx-ghc-8.6.5/tidal-1.4.7/BootTidal.hs")
+
 (provide 'misc)
