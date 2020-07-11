@@ -1,71 +1,62 @@
-;; Emacs Configuration
-;; James Porter
-;; 2013
-
-;; this prevents emacs from trying to autoinsert a
-;; (package-initialize) call here, which i do in
-;; user-lisp/package-manage.el.
-;;
-;; there may be a more official way of doing this, i am not sure
-(setq package--init-file-ensured 't)
-
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; No splash screen please ... jeez
+
+
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+(setq frame-inhibit-implied-resize t)
+
+;; No splash screen
 (setq inhibit-startup-message t)
+
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+(setq frame-inhibit-implied-resize t)
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 ;; put user-lisp directory on load-path
 (add-to-list 'load-path "~/.emacs.d/user-lisp")
 
-;; Configure package management and install/load third party packages
-(require 'package-manage)
-;; Emacs defaults
+;; add use-package
+(straight-use-package 'use-package)
+
+;; make use-package install things with straight by default
+;; TODO go back and remove :straight t from all the declarations where its not needed anymore
+(setq straight-use-package-by-default t)
+
+
+;; install utility packages
+(use-package dash)
+
+;; load all my configs
 (require 'defaults)
-;; Miscellaenous junk is in here
+(require 'appearance)
 (require 'misc)
-;; Appearance and visual tweaks
-(require 'prettiness)
-;; my custom functions
 (require 'defuns)
-;; Key bindings
+(require 'selection)
 (require 'keybinds)
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(unless (file-exists-p custom-file)
-  (shell-command (concat "touch " custom-file)))
-(load custom-file)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Mode specific congiguration ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'setup-python)
+;; package and language specific configs
 (require 'setup-company)
-(require 'setup-ido)
-(require 'setup-tramp)
-(require 'setup-julia)
-(require 'setup-js)
-(require 'setup-markdown)
-(require 'setup-prog-modes)
-(require 'setup-dired)
-(require 'setup-flycheck)
-(require 'setup-eshell)
-(require 'setup-popwin)
-(require 'setup-ibuffer)
-(require 'setup-mc)
-(require 'setup-phi-search)
-;; (require 'setup-irc)
-(require 'setup-clojure)
-(require 'setup-yaml)
-(require 'setup-go)
-(require 'setup-undo-tree)
-(require 'setup-toggle-quotes)
-(require 'setup-ruby)
 (require 'setup-projectile)
-(require 'setup-flyspell)
+
 
 (if window-system
   (setq default-directory (expand-file-name "~")))

@@ -1,6 +1,13 @@
 ;; defaults.el
 ;; Reasonable default settings for emacs
 
+;; no-littering tries to collect all the random config files that
+;; various emacs packages (and emacs itself) create into two
+;; directories: .emacs.d/var and .emacs.d/etc
+(use-package no-littering
+  :config
+  (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
+
 ;; disable backup, autosave, and lockfiles
 (setq backup-inhibited t)
 (setq auto-save-default nil)
@@ -11,6 +18,9 @@
 
 ;; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; don't ask about following symlinks
+(setq vc-follow-symlinks t)
 
 ;; Always display line and column numbers
 (setq line-number-mode t)
@@ -27,11 +37,6 @@
 
 ;; match them automatically
 (electric-pair-mode 1)
-
-;; setup whitespace mode
-(custom-set-variables
-  '(whitespace-line-column 80)
-  '(whitespace-style '(face trailing tabs lines-tail)))
 
 ;; automatically delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
