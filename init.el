@@ -71,6 +71,7 @@
 (require 'setup-shackle)
 (require 'setup-mc)
 (require 'setup-ruby)
+(require 'setup-magit)
 
 ;; (require 'setup-julia)
 ;; (require 'setup-markdown)

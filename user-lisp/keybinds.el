@@ -61,17 +61,10 @@
 (global-set-key (kbd "M-H-n") 'jjp/forward-paragraph-with-center)
 (global-set-key (kbd "M-H-p") 'jjp/backward-paragraph-with-center)
 
-;; mark next
-(global-set-key (kbd "C-c C-n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this)
-
 ;; M-dash dammit
 (defun insert-m-dash ()
   (interactive)
   (insert-char ?\—))
-
-;; magit status
-(global-set-key (kbd "C-c s") 'magit-status)
 
 (global-set-key (kbd "M-_") 'insert-m-dash)
 (provide 'keybinds)
