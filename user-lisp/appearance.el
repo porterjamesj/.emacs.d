@@ -13,18 +13,17 @@
 ;; https://emacs.stackexchange.com/questions/5342/
 (set-face-attribute 'fringe nil :background nil)
 
-
-;; TODO this is the slowest part of init, try to optimize it
-;; possible calling (font-family-list) once in a let would cut it down
+;; NOTE this is the slowest part of init
 (if window-system
   (progn
     ;; make fringe a bit smaller
     (fringe-mode 4)
     ;; fonts
-    (if (member "Source Code Pro" (font-family-list))
-      (set-face-attribute 'default nil :font "Source Code Pro-13")
-      (if (member "Ubuntu Mono" (font-family-list))
-        (set-face-attribute 'default nil :font "Ubuntu Mono-12")))
+    (let ((fonts (font-family-list)))
+      (if (member "Source Code Pro" fonts)
+          (set-face-attribute 'default nil :font "Source Code Pro-13")
+        (if (member "Ubuntu Mono" fonts)
+            (set-face-attribute 'default nil :font "Ubuntu Mono-12"))))
 
     ;; Use Consolas as fallback for Greek
     (set-fontset-font "fontset-default"

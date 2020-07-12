@@ -2,11 +2,10 @@
 (require 'dash)
 
 
-(use-package ag)
+(use-package ag
+  :defer t)
 
 (use-package projectile
-  :after (selectrum ag)
-
   :init
   ;; https://oremacs.com/2015/07/16/callback-quit/
   (defmacro jjp/quit-and-run (&rest body)

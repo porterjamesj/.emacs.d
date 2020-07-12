@@ -3,8 +3,6 @@
 ;; Miscellaneous little-used programming modes and settings that don't
 ;; quite merit their own file
 
-;; TODO have this is a hook on go mode
-
 (use-package julia-mode
   :mode ("\\.jl\\'" . julia-mode))
 
@@ -29,5 +27,11 @@
             (lambda ()
               (setq tab-width 4)
               (flycheck-mode-on-safe))))
+
+(use-package undo-tree
+  :demand t
+  :bind (:map undo-tree-map) ("M-_" . insert-m-dash)
+  :config
+  (global-undo-tree-mode))
 
 (provide 'misc)

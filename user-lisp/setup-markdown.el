@@ -23,7 +23,6 @@
   :mode (("\\.markdown\\'" . markdown-mode) ("\\.md\\'" . markdown-mode))
   ;; markdown mode really aggressively takes over with it's own
   ;; keybindings, so we have to reset them back to normal here
-
   :bind
   (:map markdown-mode-map
         ("M-n" . forward-paragraph)
@@ -32,13 +31,5 @@
         ("M-b" . backward-word)
         ("C-e" . move-end-of-line)
         ("C-a" . move-beginning-of-line)))
-
-;;   :config
-;;   (define-key markdown-mode-map (kbd "M-n") 'forward-paragraph)
-;;   (define-key markdown-mode-map (kbd "M-p") 'backward-paragraph)
-;;   (define-key markdown-mode-map (kbd "M-f") 'forward-word)
-;;   (define-key markdown-mode-map (kbd "M-b") 'backward-word)
-;;   (define-key markdown-mode-map (kbd "C-e") 'move-end-of-line)
-;;   (define-key markdown-mode-map (kbd "C-a") 'move-beginning-of-line))
 
 (provide 'setup-markdown)

@@ -46,9 +46,6 @@
 
 ;; add use-package
 (straight-use-package 'use-package)
-
-;; make use-package install things with straight by default
-;; TODO go back and remove :straight t from all the declarations where its not needed anymore
 (setq straight-use-package-by-default t)
 
 ;; install utility packages
@@ -74,9 +71,6 @@
 (require 'setup-ruby)
 (require 'setup-magit)
 (require 'setup-markdown)
-
-;; (require 'setup-dired)
-;; (require 'setup-undo-tree)
 
 (if window-system
   (setq default-directory (expand-file-name "~")))
