@@ -9,7 +9,9 @@
   (transient-bind-q-to-quit))
 
 (use-package magit
-  :after (transient)
+  :defer 5 ;; not clear why this is necessary, `bind' should defer on
+           ;; it's own, but for some reason startup is way slower
+           ;; without this
   :bind (("C-c s" . #'magit-status))
   :init
   ;; Suppress the message we get about "Turning on

@@ -66,6 +66,7 @@
 ;; package and language specific configs
 (require 'setup-company)
 (require 'setup-projectile)
+(require 'setup-flycheck)
 (require 'setup-python)
 (require 'setup-web)
 (require 'setup-shackle)
@@ -73,7 +74,6 @@
 (require 'setup-ruby)
 (require 'setup-magit)
 
-;; (require 'setup-julia)
 ;; (require 'setup-markdown)
 ;; (require 'setup-dired)
 ;; (require 'setup-ibuffer)

@@ -20,9 +20,7 @@
          ("\\.tsx?\\'" . web-mode)
          ("\\.css\\'" . web-mode)
          ;; additions from me (mostly recurse.com stuff)
-         ("\\.scss\\'" . web-mode)
-         ("\\.es6\\'" . web-mode)
-         ("\\.module\\.es6\\'" . web-mode))
+         ("\\.scss\\'" . web-mode))
   :config
 
   ;; Indent by two spaces by default. Compatibility with Prettier.
@@ -54,12 +52,19 @@
                           (member (car item) types))
                         web-mode-comment-formats))
     (dolist (type types)
-      (push (cons type "//") web-mode-comment-formats)))
+      (push (cons type "//") web-mode-comment-formats))))
 
-  ;; treat .js, .js, .es6, .module.es6 files as jsx
-  (setq web-mode-content-types-alist
-        '(("jsx" . "\\.js[x]?\\'")
-          ("jsx" . "\\.es6\\'")
-          ("jsx" . "\\.module\\.es6\\'"))))
+
+
+(use-package rjsx-mode
+  :mode (("\\.es6\\'" . rjsx-mode)
+         ("\\.module.es6\\'" . rjsx-mode))
+  :custom
+  (js2-strict-missing-semi-warning nil)
+  (js2-strict-trailing-comma-warning nil)
+  (js-indent-level 2)
+  (js2-basic-offset 2)
+  (js2-basic-offset 2)
+  (sgml-basic-offset 2))
 
 (provide 'setup-web)
