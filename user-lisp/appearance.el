@@ -6,8 +6,7 @@
 ;;
 ;; Here we use my fork, which rips out all the color-theme stuff and just has the `deftheme` version
 (use-package solarized-theme
-  :straight
-  (:host github :repo "porterjamesj/emacs-color-theme-solarized"))
+  :straight (:host github :repo "porterjamesj/emacs-color-theme-solarized"))
 
 ;; make fringes same color as background
 ;; https://emacs.stackexchange.com/questions/5342/
@@ -35,6 +34,16 @@
       (cons (decode-char 'ucs #x0370)
         (decode-char 'ucs #x03ff))
       "Consolas-15")))
+
+;; automatic dark mode handling
+
+(use-package auto-dark-emacs
+  :if (eq system-type 'darwin)
+  :straight (:host github :repo "porterjamesj/auto-dark-emacs")
+  :custom
+  (auto-dark-emacs/allow-osascript t) ;; this is pretty inefficient, but makes it work in terminal
+  (auto-dark-emacs/dark-theme 'solarized)
+  (auto-dark-emacs/light-theme 'solarized))
 
 ;; TODO modeline
 
