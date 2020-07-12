@@ -14,14 +14,6 @@
       (exec-path-from-shell-initialize)
       (setq jjp/exec-path-loaded-from-shell t))))
 
-(defun jjp/find-file-or-projectile-find-file ()
-  "calls either find-file or projectile-find-file depending
-  whether we're in a projectile project or not"
-  (interactive)
-  (if (projectile-project-root)
-    (projectile-find-file)
-    (find-file)))
-
 (defun jjp/copy-line-or-region ()
   "copies the region if active, the current line if not."
   (interactive)
