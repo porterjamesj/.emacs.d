@@ -37,6 +37,11 @@
   (projectile-mode +1)
   (jjp/exec-path-from-shell-initialize) ;; so we can find `ag'
   (add-to-list 'selectrum-minibuffer-bindings '("C-x C-f" . jjp/drop-to-regular-find-file))
+  ;; for some reason, the fallback-to-regular-find-file code causes a
+  ;; dialog window to open in GUI emacs, I don't know why. so we set
+  ;; this to prevent that from ever happening. we also set this in
+  ;; defaults.el, but also adding it here in case that changes
+  (setq use-dialog-box nil)
   :custom
   (projectile-completion-system 'default "It uses ido by default, but we want to use the default for selectrum")
   (projectile-project-search-path
