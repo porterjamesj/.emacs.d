@@ -75,16 +75,8 @@
 (require 'setup-magit)
 (require 'setup-markdown)
 
-
 ;; (require 'setup-dired)
-;; (require 'setup-ibuffer)
-;; (require 'setup-clojure)
-;; (require 'setup-yaml)
-;; (require 'setup-go)
 ;; (require 'setup-undo-tree)
-;; (require 'setup-toggle-quotes)
-;; (require 'setup-flyspell)
-
 
 (if window-system
   (setq default-directory (expand-file-name "~")))

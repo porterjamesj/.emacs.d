@@ -18,3 +18,7 @@
 - When creating a new branch, you almost always want to use `b s`
   ("new spinoff") rather than `b c` or `b n`, since `b s` assumes you
   want to base your new branch off of the current branch
+
+### Markdown
+
+- Use `C-;` to interactively correct the next misspelled word
