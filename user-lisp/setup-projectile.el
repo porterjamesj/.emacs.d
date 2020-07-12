@@ -14,7 +14,9 @@
 (use-package ag)
 
 (use-package projectile
-  :config (projectile-mode +1)
+  :config
+  (projectile-mode +1)
+  (jjp/exec-path-from-shell-initialize) ;; so we can find `ag'
   :custom
   (projectile-completion-system 'default "It uses ido by default, but we want to use the default for selectrum")
   (projectile-project-search-path

@@ -13,6 +13,9 @@
 ;; https://emacs.stackexchange.com/questions/5342/
 (set-face-attribute 'fringe nil :background nil)
 
+
+;; TODO this is the slowest part of init, try to optimize it
+;; possible calling (font-family-list) once in a let would cut it down
 (if window-system
   (progn
     ;; make fringe a bit smaller

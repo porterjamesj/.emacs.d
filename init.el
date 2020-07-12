@@ -21,6 +21,14 @@
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
 
+;; NOTE it's important to keep GUI emacs and terminal emacs the same
+;; version (which can be a pain because you have to `brew unlink emacs
+;; && brew link --overwrite emacs` everytime you upgrade GUI emacs)
+;;
+;; if they differ, straight's build caches get busted and it rebuilds
+;; all the packages
+(setq straight-check-for-modifications '(check-on-save find-when-checking))
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -46,6 +54,7 @@
 
 ;; install utility packages
 (use-package dash)
+(use-package exec-path-from-shell)
 
 ;; load all my configs
 (require 'defaults)
@@ -62,17 +71,14 @@
 (require 'setup-python)
 (require 'setup-web)
 (require 'setup-shackle)
+(require 'setup-mc)
 
 ;; (require 'setup-julia)
-
 ;; (require 'setup-markdown)
 ;; (require 'setup-prog-modes)
 ;; (require 'setup-dired)
-;; (require 'setup-flycheck)
 ;; (require 'setup-eshell)
 ;; (require 'setup-ibuffer)
-;; (require 'setup-mc)
-;; (require 'setup-phi-search)
 ;; (require 'setup-clojure)
 ;; (require 'setup-yaml)
 ;; (require 'setup-go)

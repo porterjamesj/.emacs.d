@@ -4,6 +4,17 @@
 ;; general
 
 
+(setq jjp/exec-path-loaded-from-shell nil)
+
+(defun jjp/exec-path-from-shell-initialize ()
+  "If we're windowed, calls exec-path-from-shell-initialize if we
+  haven't already done it. This is useful for defering doing
+  this, since if we don't it makes startup much slower"
+  (when window-system
+    (unless jjp/exec-path-loaded-from-shell
+      (exec-path-from-shell-initialize)
+      (setq jjp/exec-path-loaded-from-shell t))))
+
 (defun jjp/find-file-or-projectile-find-file ()
   "calls either find-file or projectile-find-file depending
   whether we're in a projectile project or not"

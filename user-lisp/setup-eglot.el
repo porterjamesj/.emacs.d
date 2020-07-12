@@ -1,5 +1,3 @@
-(use-package exec-path-from-shell)
-
 (use-package eglot
   :defer t
   ;; workaround for some versioning issues
@@ -8,8 +6,7 @@
   :init (defun project-root (project)
           (car (project-roots project)))
   ;; we use exec path from shell here so we can find installed lsp servers
-  :config (when window-system
-            (exec-path-from-shell-initialize)))
+  :config (jjp/exec-path-from-shell-initialize))
 
 (use-package flymake
   :straight (:type built-in))

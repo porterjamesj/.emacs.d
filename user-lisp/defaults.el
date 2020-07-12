@@ -42,6 +42,9 @@
 ;; show matching parens
 (show-paren-mode 1)
 
+;; TODO try smartparens; electric pair has some behavior with quotes
+;; that I find not great
+;;
 ;; match them automatically
 (electric-pair-mode 1)
 
