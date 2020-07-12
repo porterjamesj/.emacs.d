@@ -45,6 +45,7 @@
   (auto-dark-emacs/dark-theme 'solarized)
   (auto-dark-emacs/light-theme 'solarized))
 
-;; TODO modeline
+;; simple modeline
+(setq-default mode-line-format '("%e" mode-line-front-space mode-line-buffer-identification "line %l"))
 
 (provide 'appearance)
