@@ -1,4 +1,5 @@
 (("ag.el" . "bd81d68466e44301505629454dfc689b6c17d94b")
+ ("auto-dark-emacs" . "532212db0ac21afd04da79e935ab77f6856eb368")
  ("clojure-mode" . "da9f1ec717dac1194404b4a4562dba6bd9a4ee3a")
  ("company-mode" . "1f56bec0ba7ce336eb8661b4d34e4b024d7dd04c")
  ("dash.el" . "732d92eac56023a4fb4a5dc3d9d4e274ebf44bf9")
