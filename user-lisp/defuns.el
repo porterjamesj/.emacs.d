@@ -4,7 +4,7 @@
 ;; general
 
 
-(setq jjp/exec-path-loaded-from-shell nil)
+(defvar jjp/exec-path-loaded-from-shell nil)
 
 (defun jjp/exec-path-from-shell-initialize ()
   "If we're windowed, calls exec-path-from-shell-initialize if we

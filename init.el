@@ -75,9 +75,7 @@
 
 ;; (require 'setup-julia)
 ;; (require 'setup-markdown)
-;; (require 'setup-prog-modes)
 ;; (require 'setup-dired)
-;; (require 'setup-eshell)
 ;; (require 'setup-ibuffer)
 ;; (require 'setup-clojure)
 ;; (require 'setup-yaml)
@@ -85,7 +83,6 @@
 ;; (require 'setup-undo-tree)
 ;; (require 'setup-toggle-quotes)
 ;; (require 'setup-ruby)
-;; (require 'setup-projectile)
 ;; (require 'setup-flyspell)
 
 

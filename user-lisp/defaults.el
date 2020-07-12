@@ -29,6 +29,9 @@
 ;; don't ask about following symlinks
 (setq vc-follow-symlinks t)
 
+;; prevent things like find-file from ever using os windows
+(setq use-dialog-box nil)
+
 ;; Always display line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -50,6 +53,9 @@
 
 ;; automatically delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; enable hide-show mode in prog-modes
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 
 ;; allow upcase and downcase region
 (put 'downcase-region 'disabled nil)
