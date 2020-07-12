@@ -3,7 +3,6 @@
 
 ;; general
 
-
 (defvar jjp/exec-path-loaded-from-shell nil)
 
 (defun jjp/exec-path-from-shell-initialize ()
@@ -30,22 +29,36 @@
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-end-position))))
 
-(defun jjp/rename-current-buffer-file ()
-  "renames current buffer and file it is visiting."
-  (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-name)))))))
+
+;; from radian with slight tweaks
+;; https://github.com/raxod502/radian/blob/c114b36abb32752e0ed5a3e3a797d4ce60fad92a/emacs/radian.el#L4239
+(defun jjp/rename-current-file (newname)
+  "Rename file visited by current buffer to NEWNAME.
+Interactively, prompt the user for the target filename, with
+completion.
+If NEWNAME is a directory then extend it with the basename of
+`buffer-file-name'. Make parent directories automatically."
+  (interactive
+   (progn
+     (unless buffer-file-name
+       (user-error "Current buffer is not visiting a file"))
+     (let ((newname (read-file-name "Rename to: " buffer-file-name)))
+       (when (equal (file-truename newname)
+                    (file-truename buffer-file-name))
+         (user-error "%s" "Can't rename a file to itself"))
+       (list newname))))
+  (unless buffer-file-name
+    (error "Current buffer is not visiting a file"))
+  (when (equal (file-truename newname)
+               (file-truename buffer-file-name))
+    (error "%s: %s" "Can't rename a file to itself" newname))
+  (when (equal newname (file-name-as-directory newname))
+    (setq newname
+          (concat newname (file-name-nondirectory buffer-file-name))))
+  (make-directory (file-name-directory newname) 'parents)
+  ;; Passing integer as OK-IF-ALREADY-EXISTS means prompt for
+  ;; confirmation before overwriting. Why? Who can say...
+  (dired-rename-file buffer-file-name newname 0))
 
 ;; from the wiki http://www.emacswiki.org/emacs/MiniBuffer
 (defun jjp/switch-to-minibuffer ()

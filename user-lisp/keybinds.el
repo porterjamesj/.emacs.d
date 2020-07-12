@@ -5,7 +5,7 @@
 
 ;;  buffers and files
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
-(global-set-key (kbd "C-x C-r") 'jjp/rename-current-buffer-file)
+(global-set-key (kbd "C-x C-r") 'jjp/rename-current-file)
 
 ;; longlines toggle
 (global-set-key (kbd "C-c l") 'longlines-mode)
