@@ -66,11 +66,11 @@
 ;; package and language specific configs
 (require 'setup-company)
 (require 'setup-projectile)
-(require 'setup-eglot)
 (require 'setup-python)
 (require 'setup-web)
 (require 'setup-shackle)
 (require 'setup-mc)
+(require 'setup-ruby)
 
 ;; (require 'setup-julia)
 ;; (require 'setup-markdown)
@@ -81,7 +81,6 @@
 ;; (require 'setup-go)
 ;; (require 'setup-undo-tree)
 ;; (require 'setup-toggle-quotes)
-;; (require 'setup-ruby)
 ;; (require 'setup-flyspell)
 
 

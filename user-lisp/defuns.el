@@ -14,6 +14,10 @@
       (exec-path-from-shell-initialize)
       (setq jjp/exec-path-loaded-from-shell t))))
 
+(defun jjp/not-if-tramp (f)
+  ;; call f, but only if we're not connected via tramp
+  (when (not (file-remote-p default-directory)) (funcall f)))
+
 (defun jjp/copy-line-or-region ()
   "copies the region if active, the current line if not."
   (interactive)

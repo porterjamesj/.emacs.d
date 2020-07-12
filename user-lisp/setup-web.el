@@ -62,5 +62,4 @@
           ("jsx" . "\\.es6\\'")
           ("jsx" . "\\.module\\.es6\\'"))))
 
-
 (provide 'setup-web)
