@@ -73,8 +73,9 @@
 (require 'setup-mc)
 (require 'setup-ruby)
 (require 'setup-magit)
+(require 'setup-markdown)
 
-;; (require 'setup-markdown)
+
 ;; (require 'setup-dired)
 ;; (require 'setup-ibuffer)
 ;; (require 'setup-clojure)

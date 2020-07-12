@@ -20,7 +20,10 @@
          ("\\.tsx?\\'" . web-mode)
          ("\\.css\\'" . web-mode)
          ;; additions from me (mostly recurse.com stuff)
-         ("\\.scss\\'" . web-mode))
+         ("\\.scss\\'" . web-mode)
+         ("\\.es6\\'" . rjsx-mode)
+         ("\\.module.es6\\'" . rjsx-mode))
+
   :config
 
   ;; Indent by two spaces by default. Compatibility with Prettier.
@@ -52,13 +55,38 @@
                           (member (car item) types))
                         web-mode-comment-formats))
     (dolist (type types)
-      (push (cons type "//") web-mode-comment-formats))))
+      (push (cons type "//") web-mode-comment-formats)))
 
+  (setq web-mode-content-types-alist
+        '(("jsx" . "\\.js[x]?\\'")
+          ("jsx" . "\\.es6\\'")
+          ("jsx" . "\\.module\\.es6\\'"))))
 
+(use-package json-mode
+  :defer t)
 
 (use-package rjsx-mode
+  ;; the tradeoff between rjsx mode and web-mode is that rjsx actually
+  ;; parses the file and shows syntax errors, but it's very slow. It's
+  ;; electric pairing functionality is also annoying.
+  ;;
+  ;; web mode is fast and has good electirc pairing, but doesn't show
+  ;; syntax errors in the buffer
+  ;;
+  ;; disabling rjsx mode for now
+  ;;
+  ;; I think web-mode + some sort of LSP server for syntax errors
+  ;; would be amazing, but I haven't been able to get any of the LSP
+  ;; modes to work well (I think mostly because of the unusual file
+  ;; extensions in recurse.com).
+  :disabled
   :mode (("\\.es6\\'" . rjsx-mode)
          ("\\.module.es6\\'" . rjsx-mode))
+  ;; remove rjsx's electric functionality, which I find confusing
+  :bind (:map rjsx-mode-map
+              ("<" . nil)
+              ("C-d" . nil)
+              (">" . nil))
   :custom
   (js2-strict-missing-semi-warning nil)
   (js2-strict-trailing-comma-warning nil)
