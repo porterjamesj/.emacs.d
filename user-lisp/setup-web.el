@@ -60,6 +60,23 @@
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'")
           ("jsx" . "\\.es6\\'")
-          ("jsx" . "\\.module\\.es6\\'"))))
+          ("jsx" . "\\.module\\.es6\\'")))
+
+  (defun jjp/eglot-ensure-if-js ()
+    (when (-contains? '("jsx", "js") web-mode-content-type)
+      (jjp/eglot-ensure)))
+
+  (defun jjp/get-web-mode-eglot-server (_)
+    (if (-contains? '("jsx", "js") web-mode-content-type)
+        '("javascript-typescript-stdio")
+      nil))
+
+  (require 'eglot)
+
+  (add-to-list 'eglot-server-programs '(web-mode . jjp/get-web-mode-eglot-server))
+
+  (if (executable-find "javascript-typescript-stdio")
+      (add-hook 'web-mode-hook #'jjp/eglot-ensure-if-js)))
+
 
 (provide 'setup-web)
