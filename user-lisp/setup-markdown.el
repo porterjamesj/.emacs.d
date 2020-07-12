@@ -1,25 +1,35 @@
-(require 'markdown-mode)
-(require 'flyspell)
+(use-package flyspell-correct)
 
-;; add correct extensions for markdown mode
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(use-package flyspell
+  :straight (:type built-in)
+  :hook (markdown-mode . flyspell-mode)
+  :bind (:map flyspell-mode-map) ("C-;" . flyspell-correct-wrapper)
+  :config
+  (require 'flyspell-correct)
+  (when (executable-find "hunspell")
+    (setq ispell-local-dictionary-alist '(("en_US"
+                                           "[[:alpha:]]"
+                                           "[^[:alpha:]]"
+                                           "[']"
+                                           t
+                                           ("-d" "en_US")
+                                           nil
+                                           iso-8859-1)))
 
-;; fix M-n and M-p
-(define-key markdown-mode-map (kbd "M-n") 'forward-paragraph)
-(define-key markdown-mode-map (kbd "M-p") 'backward-paragraph)
+    (setq ispell-program-name "hunspell")
+    (setq ispell-local-dictionary "en_US")))
 
-;; fix M-b and M-f why does this mode override so many useful keys :/
-(define-key markdown-mode-map (kbd "M-f") 'forward-word)
-(define-key markdown-mode-map (kbd "M-b") 'backward-word)
-
-;; GAHHHHH
-(define-key markdown-mode-map (kbd "C-e") 'move-end-of-line)
-(define-key markdown-mode-map (kbd "M-a") 'move-beginning-of-line)
-
-(add-hook 'markdown-mode-hook
-  (lambda ()
-    (flyspell-mode)
-    (auto-fill-mode)))
+(use-package markdown-mode
+  :mode (("\\.markdown\\'" . markdown-mode) ("\\.md\\'" . markdown-mode))
+  ;; markdown mode really aggressively takes over with it's own
+  ;; keybindings, so we have to reset them back to normal here
+  :bind
+  (:map markdown-mode-map
+        ("M-n" . forward-paragraph)
+        ("M-p" . backward-paragraph)
+        ("M-f" . forward-word)
+        ("M-b" . backward-word)
+        ("C-e" . move-end-of-line)
+        ("C-a" . move-beginning-of-line)))
 
 (provide 'setup-markdown)

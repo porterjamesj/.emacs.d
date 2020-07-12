@@ -3,41 +3,61 @@
 
 ;; general
 
+(defvar jjp/exec-path-loaded-from-shell nil)
 
-(defun ido-find-file-or-projectile-find-file ()
-  "calls either find-file or projectile-find-file depending
-  whether we're in a projectile project or not"
-  (interactive)
-  (if (projectile-project-root)
-    (projectile-find-file)
-    (ido-find-file)))
+(defun jjp/exec-path-from-shell-initialize ()
+  "If we're windowed, calls exec-path-from-shell-initialize if we
+  haven't already done it. This is useful for defering doing
+  this, since if we don't it makes startup much slower"
+  (when window-system
+    (unless jjp/exec-path-loaded-from-shell
+      (exec-path-from-shell-initialize)
+      (setq jjp/exec-path-loaded-from-shell t))))
 
-(defun copy-line-or-region ()
+(defun jjp/not-if-tramp (f)
+  ;; call f, but only if we're not connected via tramp
+  (when (not (file-remote-p default-directory)) (funcall f)))
+
+(defun jjp/copy-line-or-region ()
   "copies the region if active, the current line if not."
   (interactive)
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-end-position))))
 
-(defun rename-current-buffer-file ()
-  "renames current buffer and file it is visiting."
-  (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-name)))))))
+
+;; from radian with slight tweaks
+;; https://github.com/raxod502/radian/blob/c114b36abb32752e0ed5a3e3a797d4ce60fad92a/emacs/radian.el#L4239
+(defun jjp/rename-current-file (newname)
+  "Rename file visited by current buffer to NEWNAME.
+Interactively, prompt the user for the target filename, with
+completion.
+If NEWNAME is a directory then extend it with the basename of
+`buffer-file-name'. Make parent directories automatically."
+  (interactive
+   (progn
+     (unless buffer-file-name
+       (user-error "Current buffer is not visiting a file"))
+     (let ((newname (read-file-name "Rename to: " buffer-file-name)))
+       (when (equal (file-truename newname)
+                    (file-truename buffer-file-name))
+         (user-error "%s" "Can't rename a file to itself"))
+       (list newname))))
+  (unless buffer-file-name
+    (error "Current buffer is not visiting a file"))
+  (when (equal (file-truename newname)
+               (file-truename buffer-file-name))
+    (error "%s: %s" "Can't rename a file to itself" newname))
+  (when (equal newname (file-name-as-directory newname))
+    (setq newname
+          (concat newname (file-name-nondirectory buffer-file-name))))
+  (make-directory (file-name-directory newname) 'parents)
+  ;; Passing integer as OK-IF-ALREADY-EXISTS means prompt for
+  ;; confirmation before overwriting. Why? Who can say...
+  (dired-rename-file buffer-file-name newname 0))
 
 ;; from the wiki http://www.emacswiki.org/emacs/MiniBuffer
-(defun switch-to-minibuffer ()
+(defun jjp/switch-to-minibuffer ()
   "Switch to minibuffer window."
   (interactive)
   (if (active-minibuffer-window)
@@ -46,29 +66,29 @@
 
 ;; movement
 
-(defun fast-down ()
+(defun jjp/fast-down ()
   (interactive)
   (ignore-errors (next-line 5)))
 
-(defun fast-up ()
+(defun jjp/fast-up ()
   (interactive)
   (ignore-errors (previous-line 5)))
 
-(defun fast-forward ()
+(defun jjp/fast-forward ()
   (interactive)
   (ignore-errors (forward-char 5)))
 
-(defun fast-back ()
+(defun jjp/fast-back ()
   (interactive)
   (ignore-errors (backward-char 5)))
 
 
 ;; shamelessly stolen from josh miller
 
-(defun emacs-buffer-p (name)
+(defun jjp/emacs-buffer-p (name)
   (string-match-p "\\*.*\\*" name))
 
-(defun next-non-emacs-buffer (&optional original)
+(defun jjp/next-non-emacs-buffer (&optional original)
   "Similar to next-buffer, but ignores emacs buffer such as *scratch*, *messages* etc."
   (interactive)
   (let ((tmp-orig (or original (buffer-name))))
@@ -78,7 +98,7 @@
          (emacs-buffer-p (buffer-name)))
         (next-non-emacs-buffer tmp-orig))))
 
-(defun previous-non-emacs-buffer (&optional original)
+(defun jjp/previous-non-emacs-buffer (&optional original)
   "Similar to previous-buffer, but ignores emacs buffer such as *scratch*, *messages* etc."
   (interactive)
   (let ((tmp-orig (or original (buffer-name))))
@@ -88,31 +108,31 @@
          (emacs-buffer-p (buffer-name)))
         (previous-non-emacs-buffer tmp-orig))))
 
-(defun previous-line-with-center ()
+(defun jjp/previous-line-with-center ()
   (interactive)
   (ignore-errors
     (previous-line)
     (recenter)))
 
-(defun next-line-with-center ()
+(defun jjp/next-line-with-center ()
   (interactive)
   (ignore-errors
     (next-line)
     (recenter)))
 
-(defun forward-paragraph-with-center ()
+(defun jjp/forward-paragraph-with-center ()
   (interactive)
   (ignore-errors
     (forward-paragraph)
     (recenter)))
 
-(defun backward-paragraph-with-center ()
+(defun jjp/backward-paragraph-with-center ()
   (interactive)
   (ignore-errors
     (backward-paragraph)
     (recenter)))
 
-(defun comment-or-uncomment-region-or-line ()
+(defun jjp/comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
     (interactive)
     (let (beg end)
@@ -121,7 +141,7 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 
-(defun duplicate-current-line-or-region ()
+(defun jjp/duplicate-current-line-or-region ()
   "Duplicates the current line or region ARG times.
 If there's no region, the current line will be duplicated. However, if
 there's a region, all lines that region covers will be duplicated."
@@ -144,7 +164,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; misc
 
-(defun calc-eval-region (arg beg end)
+(defun jjp/calc-eval-region (arg beg end)
   "Calculate the region and display the result in the echo area.
 With prefix ARG non-nil, insert the result at the end of region."
   (interactive "P\nr")
@@ -155,5 +175,10 @@ With prefix ARG non-nil, insert the result at the end of region."
       (goto-char end)
       (save-excursion
         (insert (concat " = " result))))))
+
+(defun jjp/profile-init ()
+  (interactive)
+  (use-package esup)
+  (esup))
 
 (provide 'defuns)

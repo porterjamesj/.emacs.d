@@ -16,8 +16,15 @@ request/*
 ido.last
 smex-items
 games/
-var/
 transient/
 projectile-bookmarks.eld
 .python-environments/
 network-security.data
+
+var/*
+etc/*
+
+straight/*
+!straight/versions
+straight/versions/*
+!straight/versions/default.el
