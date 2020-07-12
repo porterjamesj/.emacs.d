@@ -2,10 +2,6 @@
 ;; https://github.com/raxod502/radian/blob/c114b36abb32752e0ed5a3e3a797d4ce60fad92a/emacs/radian.el#L3437
 
 (use-package web-mode
-  :init
-  ;; prevent scss mode from being used, we want web-mode for everything
-  ;; (rassq-delete-all 'scss-mode auto-mode-alist)
-
   ;; Unfortunately `web-mode' does not come with `auto-mode-alist'
   ;; autoloads. We have to establish them manually. This list comes
   ;; from the official website at <http://web-mode.org/> as of

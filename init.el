@@ -1,3 +1,7 @@
+;; Make startup faster by reducing the frequency of garbage
+;; collection.  The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -81,3 +85,6 @@
 
 (if window-system
   (setq default-directory (expand-file-name "~")))
+
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))

@@ -156,4 +156,9 @@ With prefix ARG non-nil, insert the result at the end of region."
       (save-excursion
         (insert (concat " = " result))))))
 
+(defun jjp/profile-init ()
+  (interactive)
+  (use-package esup)
+  (esup))
+
 (provide 'defuns)

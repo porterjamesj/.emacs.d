@@ -10,6 +10,7 @@
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
 
 (use-package tramp
+  :defer t
   :straight (:type built-in)
   :custom
   (tramp-default-method "ssh"))
