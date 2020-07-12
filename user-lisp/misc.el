@@ -5,10 +5,10 @@
 
 ;; TODO this is really slow, add it back but so it only happens when go-mode is loaded
 
-;; (use-package exec-path-from-shell)
+(use-package exec-path-from-shell)
 
-;; (when window-system
-;;   (exec-path-from-shell-initialize)
+(when window-system
+  (exec-path-from-shell-initialize))
 ;;   (exec-path-from-shell-copy-envs
 ;;     '("GOPATH" "GOROOT")))
 

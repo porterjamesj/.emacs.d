@@ -1,5 +1,6 @@
 ;; defaults.el
 ;; Reasonable default settings for emacs
+;; also some little configuration for built in packages (e.g. tramp)
 
 ;; no-littering tries to collect all the random config files that
 ;; various emacs packages (and emacs itself) create into two
@@ -7,6 +8,11 @@
 (use-package no-littering
   :config
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
+
+(use-package tramp
+  :straight (:type built-in)
+  :custom
+  (tramp-default-method "ssh"))
 
 ;; disable backup, autosave, and lockfiles
 (setq backup-inhibited t)

@@ -4,7 +4,6 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 
-
 ;; Resizing the Emacs frame can be a terribly expensive part of changing the
 ;; font. By inhibiting this, we easily halve startup times with fonts that are
 ;; larger than the system default.
@@ -41,7 +40,6 @@
 ;; TODO go back and remove :straight t from all the declarations where its not needed anymore
 (setq straight-use-package-by-default t)
 
-
 ;; install utility packages
 (use-package dash)
 
@@ -56,6 +54,29 @@
 ;; package and language specific configs
 (require 'setup-company)
 (require 'setup-projectile)
+(require 'setup-eglot)
+(require 'setup-python)
+(require 'setup-javascript)
+
+;; (require 'setup-julia)
+
+;; (require 'setup-markdown)
+;; (require 'setup-prog-modes)
+;; (require 'setup-dired)
+;; (require 'setup-flycheck)
+;; (require 'setup-eshell)
+;; (require 'setup-popwin)
+;; (require 'setup-ibuffer)
+;; (require 'setup-mc)
+;; (require 'setup-phi-search)
+;; (require 'setup-clojure)
+;; (require 'setup-yaml)
+;; (require 'setup-go)
+;; (require 'setup-undo-tree)
+;; (require 'setup-toggle-quotes)
+;; (require 'setup-ruby)
+;; (require 'setup-projectile)
+;; (require 'setup-flyspell)
 
 
 (if window-system

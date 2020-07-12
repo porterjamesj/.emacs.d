@@ -1,11 +1,14 @@
 (require 'dash)
 
+
 (defun jjp/find-file-or-projectile-find-file ()
   "calls either find-file or projectile-find-file depending
   whether we're in a projectile project or not"
   (interactive)
-  (if (and (fboundp 'projectile-project-root) projectile-project-root)
-    (projectile-find-file)
+  (if (and (fboundp 'projectile-project-root) (projectile-project-root))
+      ;; TODO add advice around projectile-find-file so you can hit C-x C-f
+      ;; again to drop down to regular find-file
+      (projectile-find-file)
     (call-interactively 'find-file)))
 
 (use-package projectile

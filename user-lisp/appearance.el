@@ -7,7 +7,7 @@
 ;; Here we use my fork, which rips out all the color-theme stuff and just has the `deftheme` version
 (use-package solarized-theme
   :straight
-  (solarized-theme :host github :repo "porterjamesj/emacs-color-theme-solarized"))
+  (:host github :repo "porterjamesj/emacs-color-theme-solarized"))
 
 ;; make fringes same color as background
 ;; https://emacs.stackexchange.com/questions/5342/
