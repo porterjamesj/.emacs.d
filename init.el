@@ -56,7 +56,7 @@
 (require 'setup-projectile)
 (require 'setup-eglot)
 (require 'setup-python)
-(require 'setup-javascript)
+(require 'setup-web)
 
 ;; (require 'setup-julia)
 
