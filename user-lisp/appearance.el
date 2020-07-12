@@ -13,8 +13,6 @@
 ;; https://emacs.stackexchange.com/questions/5342/
 (set-face-attribute 'fringe nil :background nil)
 
-;; shrink fringes a bit
-
 (if window-system
   (progn
     ;; make fringe a bit smaller

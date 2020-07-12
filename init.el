@@ -61,6 +61,7 @@
 (require 'setup-eglot)
 (require 'setup-python)
 (require 'setup-web)
+(require 'setup-shackle)
 
 ;; (require 'setup-julia)
 
@@ -69,7 +70,6 @@
 ;; (require 'setup-dired)
 ;; (require 'setup-flycheck)
 ;; (require 'setup-eshell)
-;; (require 'setup-popwin)
 ;; (require 'setup-ibuffer)
 ;; (require 'setup-mc)
 ;; (require 'setup-phi-search)

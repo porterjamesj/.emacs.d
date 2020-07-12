@@ -11,6 +11,8 @@
       (projectile-find-file)
     (call-interactively 'find-file)))
 
+(use-package ag)
+
 (use-package projectile
   :config (projectile-mode +1)
   :custom
@@ -21,7 +23,7 @@
   ("C-c p" . projectile-command-map)
   ("s-p" . projectile-command-map)
   :bind (("C-x C-f" . jjp/find-file-or-projectile-find-file)
-         :map projectile-mode-map
-         ("s-p s" . projectile-ag)))
+         :map projectile-command-map
+         ("s" . projectile-ag)))
 
 (provide 'setup-projectile)
