@@ -21,6 +21,7 @@
   (require 'exec-path-from-shell)
   (defvar jjp/gopath-copied-from-shell nil)
   (when (not jjp/gopath-copied-from-shell)
+    (jjp/exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-envs
      '("GOPATH" "GOROOT")))
   (add-hook 'go-mode-hook
