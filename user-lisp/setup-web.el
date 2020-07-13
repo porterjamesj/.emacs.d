@@ -21,8 +21,8 @@
          ("\\.css\\'" . web-mode)
          ;; additions from me (mostly recurse.com stuff)
          ("\\.scss\\'" . web-mode)
-         ("\\.es6\\'" . rjsx-mode)
-         ("\\.module.es6\\'" . rjsx-mode))
+         ("\\.es6\\'" . web-mode)
+         ("\\.module.es6\\'" . web-mode))
 
   :config
 
