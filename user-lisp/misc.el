@@ -15,7 +15,7 @@
 
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode)
-  :hook (before-save . gofmt-before-save)
+  :hook (go-mode . (lambda () (add-hook 'before-save-hook gofmt-before-save nil 'local)))
   :bind ("C-c C-i" . go-remove-unused-imports)
   :config
   (require 'exec-path-from-shell)

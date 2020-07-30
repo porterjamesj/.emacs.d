@@ -71,6 +71,7 @@
 (require 'setup-ruby)
 (require 'setup-magit)
 (require 'setup-markdown)
+(require 'setup-smartparens)
 
 (if window-system
   (setq default-directory (expand-file-name "~")))
