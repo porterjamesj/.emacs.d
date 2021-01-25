@@ -2,6 +2,13 @@
 
 ## Usage notes
 
+### Selecting
+
+- To just use what you typed even if it's not a match according to
+  selectrum (e.g. for making new files and directories with similar
+  names to existing ones), just up `<up>` after you type it, and you
+  can select it like any other candidate.
+
 ### Straight
 
 - Use `M-x straight-pull-package` to upgrade a package,including
