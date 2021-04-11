@@ -35,6 +35,9 @@
   ;; Autocomplete </ instantly.
   (setq web-mode-enable-auto-closing t)
 
+  ;; turn this off so it doesnt mess with smartparens
+  (setq web-mode-enable-auto-pairing nil)
+
   ;; Insert matching tags automatically. Why this is "mode 2", I have
   ;; not the slightest idea.
   (setq web-mode-auto-close-style 2)
