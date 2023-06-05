@@ -50,6 +50,9 @@
   ;; it happens to not know how to indent your code correctly.
   (setq web-mode-enable-auto-indentation nil)
 
+  ;; Enable literal interpolation
+  (setq web-mode-enable-literal-interpolation t)
+
   ;; Create line comments instead of block comments by default in
   ;; JavaScript. See <https://github.com/fxbois/web-mode/issues/619>.
   (let ((types '("javascript" "jsx")))

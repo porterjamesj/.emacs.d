@@ -37,13 +37,13 @@
 
 ;; automatic dark mode handling
 
-(use-package auto-dark-emacs
-  :if (eq system-type 'darwin)
-  :straight (:host github :repo "porterjamesj/auto-dark-emacs")
-  :custom
-  (auto-dark-emacs/allow-osascript t) ;; this is pretty inefficient, but makes it work in terminal
-  (auto-dark-emacs/dark-theme 'solarized)
-  (auto-dark-emacs/light-theme 'solarized))
+;; (use-package auto-dark-emacs
+;;   :if (eq system-type 'darwin)
+;;   :straight (:host github :repo "porterjamesj/auto-dark-emacs")
+;;   :custom
+;;   (auto-dark-emacs/allow-osascript t) ;; this is pretty inefficient, but makes it work in terminal
+;;   (auto-dark-emacs/dark-theme 'solarized)
+;;   (auto-dark-emacs/light-theme 'solarized))
 
 ;; simple modeline
 (setq-default mode-line-format '("%e" mode-line-front-space mode-line-buffer-identification "line %l"))
