@@ -5,12 +5,13 @@
   (prescient-filter-method '(literal fuzzy initialism regexp))
   (prescient-persist-mode +1))
 
-(use-package company-prescient)
-(use-package selectrum-prescient)
+(use-package vertico
+  :straight (:files (:defaults "extensions/*"))
+  :init
+  (vertico-mode))
 
-(use-package selectrum
-  :config
-  (selectrum-mode +1)
-  (selectrum-prescient-mode +1))
+(use-package vertico-prescient
+  :init
+  (vertico-prescient-mode 1))
 
 (provide 'selection)
